@@ -25,7 +25,7 @@
                 int leftNumber = _leftList[i];
                 int rightNumber = _rightList[i];
 
-                sum += rightNumber - leftNumber;
+                sum += Math.Abs(rightNumber - leftNumber);
                 index++;
             }
 

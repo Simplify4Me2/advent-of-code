@@ -11,7 +11,7 @@
                 List<int> leftList = new List<int>();
                 List<int> rightList = new List<int>();
 
-                StreamReader sr = new("D:\\Git\\advent-of-code\\advent-of-code-2024-app\\Day1\\sample-historian-hysteria.txt");
+                StreamReader sr = new("D:\\Git\\advent-of-code\\advent-of-code-2024-app\\Day1\\input-historian-hysteria.txt");
                 line = sr.ReadLine();
                 while (line != null && line != string.Empty)
                 {
