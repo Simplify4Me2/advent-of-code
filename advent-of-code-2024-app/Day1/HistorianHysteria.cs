@@ -4,7 +4,6 @@
     {
         public static void Run()
         {
-            int sum = 0;
             string? line;
             try
             {
@@ -34,9 +33,9 @@
                 if (leftList.Count != rightList.Count)
                     throw new ArgumentException("List are not the same length");
 
-                ListComparer comparer = new(leftList, rightList);
+                ListSimilarizer similarizer = new(leftList, rightList);
 
-                Console.WriteLine($"Sum: {comparer.CalculateSum()}");
+                Console.WriteLine($"Sum: {similarizer.CalculateSum()}");
                 Console.ReadLine();
             }
             catch (Exception e)
