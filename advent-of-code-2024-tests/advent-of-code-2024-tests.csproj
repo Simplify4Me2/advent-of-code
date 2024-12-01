@@ -16,11 +16,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Using Include="Xunit" />
+    <ProjectReference Include="..\advent-of-code-2024-app\advent-of-code-2024-app.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Day1\" />
+    <Using Include="Xunit" />
   </ItemGroup>
 
 </Project>

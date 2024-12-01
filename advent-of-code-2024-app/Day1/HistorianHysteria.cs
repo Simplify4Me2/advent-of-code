@@ -5,36 +5,38 @@
         public static void Run()
         {
             int sum = 0;
-            String line;
+            string? line;
             try
             {
+                List<int> leftList = new List<int>();
+                List<int> rightList = new List<int>();
+
                 StreamReader sr = new("D:\\Git\\advent-of-code\\advent-of-code-2024-app\\Day1\\sample-historian-hysteria.txt");
                 line = sr.ReadLine();
-                while (line != null)
+                while (line != null && line != string.Empty)
                 {
                     Console.WriteLine(line);
+                    if (line.Equals(string.Empty)) continue;
 
-                    //int? firstNumber = null;
-                    //int? lastNumber = null;
-                    //foreach (char c in line)
-                    //{
-                    //    if (int.TryParse(c.ToString(), out int number)) lastNumber = number;
+                    string[] numbers = line.Split(' ').Where(value => value != string.Empty).ToArray();
 
-                    //    firstNumber ??= lastNumber;
-                    //}
+                    if (numbers.Length != 2)
+                        throw new ArgumentException("2 lists expected");
 
-                    //Console.WriteLine($"First number: {firstNumber}");
-                    //Console.WriteLine($"Last number: {lastNumber}");
+                    if (int.TryParse(numbers.First(), out int leftNumber)) leftList.Add(leftNumber);
+                    if (int.TryParse(numbers.Last(), out int rightNumber)) rightList.Add(rightNumber);
 
-                    //int calibrationValue = (firstNumber.Value * 10) + lastNumber.Value;
-                    //sum += calibrationValue;
-                    //Console.WriteLine($"Calibration value: {calibrationValue}");
-
-                    line = sr.ReadLine();
+                    line = sr.ReadLine() ?? string.Empty;
                 }
 
                 sr.Close();
-                //Console.WriteLine($"Sum: {sum}");
+
+                if (leftList.Count != rightList.Count)
+                    throw new ArgumentException("List are not the same length");
+
+                ListComparer comparer = new(leftList, rightList);
+
+                Console.WriteLine($"Sum: {comparer.CalculateSum()}");
                 Console.ReadLine();
             }
             catch (Exception e)
