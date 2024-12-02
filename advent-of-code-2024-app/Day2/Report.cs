@@ -8,18 +8,19 @@
         {
             bool isIncreasing = levels[0] < levels[1];
 
-            for (int i = 0; i < levels.Count - 2; i++)
+            for (int i = 0; i < levels.Count - 1; i++)
             { 
                 int currentLevel = levels[i];
                 int nextLevel = levels[i + 1];
 
                 if (currentLevel == nextLevel)
                     return false;
-                if (currentLevel < nextLevel && !isIncreasing)
-                    return false;
-                if (currentLevel > nextLevel && isIncreasing)
-                    return false;
                 if (Math.Abs(currentLevel - nextLevel) > 3)
+                    return false;
+
+                if (isIncreasing && currentLevel > nextLevel) 
+                    return false;
+                if (!isIncreasing && currentLevel < nextLevel) 
                     return false;
             }
 
