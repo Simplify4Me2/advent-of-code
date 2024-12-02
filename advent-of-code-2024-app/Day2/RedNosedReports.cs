@@ -21,7 +21,7 @@
 
                     List<int> levels = [];
 
-                    foreach (string number in numbers) 
+                    foreach (string number in numbers)
                     {
                         if (int.TryParse(number, out int level)) levels.Add(level);
                     }
@@ -35,7 +35,7 @@
 
                 sr.Close();
 
-                int result = reports.Count(report => report.IsSafe);
+                int result = reports.Count(report => report.IsSafeUsingProblemDampener);
                 Console.WriteLine($"{result} reports are safe");
 
                 Console.ReadLine();

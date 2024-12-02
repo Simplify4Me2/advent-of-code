@@ -2,9 +2,10 @@
 {
     public class Report(List<int> levels)
     {
-        public bool IsSafe => VerifySafety();
+        public bool IsSafe => VerifySafety(levels);
+        public bool IsSafeUsingProblemDampener => VerifySafetyUsingProblemDampener(levels);
 
-        private bool VerifySafety()
+        private bool VerifySafety(List<int> levels)
         {
             bool isIncreasing = levels[0] < levels[1];
 
@@ -25,6 +26,21 @@
             }
 
             return true;
+        }
+
+        private bool VerifySafetyUsingProblemDampener(List<int> levels)
+        {
+            bool isSafe = VerifySafety(levels);
+            if (isSafe) return true;
+
+            for (int i = 0; i < levels.Count; i++)
+            {
+                var newList = new List<int>(levels);
+                newList.RemoveAt(i);
+                if (VerifySafety(newList)) return true;
+            }
+
+            return false;
         }
     }
 }
