@@ -10,7 +10,7 @@ namespace advent_of_code
         {
 
             int sum = 0;
-            string line;
+            string? line;
             try
             {
                 StreamReader sr = new("D:\\Git\\advent-of-code-2023\\advent-of-code\\Day 1\\input-trebuchet-part-one.txt");

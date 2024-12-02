@@ -6,7 +6,7 @@ namespace advent_of_code
     {
         public static void Run()
         {
-            string line;
+            string? line;
             List<string> text = [];
 
             try

@@ -1,6 +1,4 @@
-﻿using advent_of_code_2024_app.Day1;
-
-namespace advent_of_code_2024_app.Day2
+﻿namespace advent_of_code_2024_app.Day2
 {
     public static class RedNosedReports
     {
@@ -9,35 +7,37 @@ namespace advent_of_code_2024_app.Day2
             string? line;
             try
             {
-                List<int> leftList = [];
-                List<int> rightList = [];
-
-                StreamReader sr = new("D:\\Git\\advent-of-code\\advent-of-code-2024-app\\Day1\\input-historian-hysteria.txt");
+                StreamReader sr = new("D:\\Git\\advent-of-code\\advent-of-code-2024-app\\Day2\\input-red-nosed-reports.txt");
                 line = sr.ReadLine();
-                while (line != null && line != string.Empty)
+
+                List<Report> reports = [];
+
+                while (line != null)
                 {
                     Console.WriteLine(line);
                     if (line.Equals(string.Empty)) continue;
 
                     string[] numbers = line.Split(' ').Where(value => value != string.Empty).ToArray();
 
-                    if (numbers.Length != 2)
-                        throw new ArgumentException("2 lists expected");
+                    List<int> levels = [];
 
-                    if (int.TryParse(numbers.First(), out int leftNumber)) leftList.Add(leftNumber);
-                    if (int.TryParse(numbers.Last(), out int rightNumber)) rightList.Add(rightNumber);
+                    foreach (string number in numbers) 
+                    {
+                        if (int.TryParse(number, out int level)) levels.Add(level);
+                    }
 
-                    line = sr.ReadLine() ?? string.Empty;
+                    Report report = new(levels);
+                    reports.Add(report);
+                    Console.WriteLine(report.IsSafe);
+
+                    line = sr.ReadLine();
                 }
 
                 sr.Close();
 
-                if (leftList.Count != rightList.Count)
-                    throw new ArgumentException("List are not the same length");
+                int result = reports.Count(report => report.IsSafe);
+                Console.WriteLine($"{result} reports are safe");
 
-                ListSimilarizer similarizer = new(leftList, rightList);
-
-                Console.WriteLine($"Sum: {similarizer.CalculateSum()}");
                 Console.ReadLine();
             }
             catch (Exception e)

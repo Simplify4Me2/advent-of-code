@@ -5,7 +5,7 @@
         public static void Run()
         {
             int sum = 0;
-            String line;
+            string? line;
             try
             {
                 StreamReader sr = new("D:\\Git\\advent-of-code-2023\\advent-of-code\\Day 1\\input-trebuchet-part-one.txt");

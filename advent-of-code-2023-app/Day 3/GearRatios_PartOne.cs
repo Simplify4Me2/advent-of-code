@@ -7,7 +7,7 @@ namespace advent_of_code
         public static void Run()
         {
             List<string> list = [];
-            string line;
+            string? line;
             try
             {
                 StreamReader sr = new("D:\\Git\\advent-of-code-2023\\advent-of-code\\Day 3\\input-gear-ratios.txt");

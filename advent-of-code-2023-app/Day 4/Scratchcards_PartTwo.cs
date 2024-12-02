@@ -7,7 +7,7 @@ namespace advent_of_code
         public static void Run()
         {
             List<Scratchcard> allScratchcards = [];
-            string line;
+            string? line;
             try
             {
                 StreamReader sr = new("D:\\Git\\advent-of-code-2023\\advent-of-code\\Day 4\\input-scratch-cards.txt");
