@@ -13,9 +13,11 @@ namespace advent_of_code_2024_app.Day3
 
                 int result = 0;
 
+                MemoryFormatter formatter = new();
+
                 while (line != null)
                 {
-                    List <int[]> instructions = MemoryFormatter.FindEnabledNumbers(line);
+                    List <int[]> instructions = formatter.FindEnabledNumbers(line);
 
                     foreach (int[] pair in instructions)
                     {
@@ -28,6 +30,8 @@ namespace advent_of_code_2024_app.Day3
                 sr.Close();
 
                 Console.WriteLine($"Result: {result}");
+                // Wrong answers:
+                // 77877805
 
                 Console.ReadLine();
             }
