@@ -35,7 +35,7 @@
 
                 sr.Close();
 
-                int result = reports.Count(report => report.IsSafeUsingProblemDampener);
+                int result = reports.Count(report => report.IsSafe);
                 Console.WriteLine($"{result} reports are safe");
 
                 Console.ReadLine();

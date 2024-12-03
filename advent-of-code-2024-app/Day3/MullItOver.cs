@@ -1,5 +1,4 @@
-﻿using advent_of_code_2024_app.Day2;
-
+﻿
 namespace advent_of_code_2024_app.Day3
 {
     public static class MullItOver
@@ -9,36 +8,26 @@ namespace advent_of_code_2024_app.Day3
             string? line;
             try
             {
-                StreamReader sr = new("D:\\Git\\advent-of-code\\advent-of-code-2024-app\\Day2\\input-red-nosed-reports.txt");
+                StreamReader sr = new("D:\\Git\\advent-of-code\\advent-of-code-2024-app\\Day3\\input-mull-it-over.txt");
                 line = sr.ReadLine();
 
-                List<Report> reports = [];
+                int result = 0;
 
                 while (line != null)
                 {
-                    Console.WriteLine(line);
-                    if (line.Equals(string.Empty)) continue;
+                    List <int[]> instructions = MemoryFormatter.FindEnabledNumbers(line);
 
-                    string[] numbers = line.Split(' ').Where(value => value != string.Empty).ToArray();
-
-                    List<int> levels = [];
-
-                    foreach (string number in numbers)
+                    foreach (int[] pair in instructions)
                     {
-                        if (int.TryParse(number, out int level)) levels.Add(level);
+                        result += pair.First() * pair.Last();
                     }
-
-                    Report report = new(levels);
-                    reports.Add(report);
-                    Console.WriteLine(report.IsSafe);
 
                     line = sr.ReadLine();
                 }
 
                 sr.Close();
 
-                int result = reports.Count(report => report.IsSafeUsingProblemDampener);
-                Console.WriteLine($"{result} reports are safe");
+                Console.WriteLine($"Result: {result}");
 
                 Console.ReadLine();
             }

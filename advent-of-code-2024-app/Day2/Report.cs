@@ -5,7 +5,7 @@
         public bool IsSafe => VerifySafety(levels);
         public bool IsSafeUsingProblemDampener => VerifySafetyUsingProblemDampener(levels);
 
-        private bool VerifySafety(List<int> levels)
+        private static bool VerifySafety(List<int> levels)
         {
             bool isIncreasing = levels[0] < levels[1];
 
@@ -28,7 +28,7 @@
             return true;
         }
 
-        private bool VerifySafetyUsingProblemDampener(List<int> levels)
+        private static bool VerifySafetyUsingProblemDampener(List<int> levels)
         {
             bool isSafe = VerifySafety(levels);
             if (isSafe) return true;
