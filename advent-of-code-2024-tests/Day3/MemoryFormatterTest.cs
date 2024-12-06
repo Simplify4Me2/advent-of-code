@@ -30,7 +30,9 @@ namespace advent_of_code_2024_tests.Day3
         {
             string input = "xmul(2,4)&mul[3,7]!^don't()_mul(5,5)+mul(32,64](mul(11,8)undo()?mul(8,5))\r\n";
 
-            var result = MemoryFormatter.FindEnabledNumbers(input);
+            MemoryFormatter formatter = new();
+
+            var result = formatter.FindEnabledNumbers(input);
 
             Assert.Contains([2, 4], result);
             Assert.DoesNotContain([5, 5], result);
