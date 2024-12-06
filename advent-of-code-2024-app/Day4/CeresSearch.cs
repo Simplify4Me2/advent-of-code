@@ -22,15 +22,7 @@
 
                 sr.Close();
 
-                int occurences = 0;
-
-                WordSearch search = new();
-
-                input.HorizontalLines.ForEach(line => occurences += search.Find(line));
-                input.VerticalLines.ForEach(line => occurences += search.Find(line));
-                input.DiagonalLines.ForEach(line => occurences += search.Find(line));
-
-                Console.WriteLine($"Occurences: {occurences}");
+                Console.WriteLine($"Occurences: {input.XMasOccurences}");
 
                 Console.ReadLine();
             }

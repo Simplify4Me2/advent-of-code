@@ -74,5 +74,36 @@ namespace advent_of_code_2024_tests.Day4
             Assert.Contains(".AAX", result);
             Assert.Contains(".AS.", result);
         }
+
+        [Fact]
+        public void FindSingle_XMasOccurrences()
+        {
+            PuzzleInput input = new();
+
+            input.Add("M.S");
+            input.Add(".A.");
+            input.Add("M.S");
+
+            Assert.Equal(1, input.XMasOccurences);
+        }
+
+        [Fact]
+        public void FindMultiple_XMasOccurrences()
+        {
+            PuzzleInput input = new();
+
+            input.Add("MMMSXXMASM");
+            input.Add("MSAMXMSMSA");
+            input.Add("AMXSXMAAMM");
+            input.Add("MSAMASMSMX");
+            input.Add("XMASAMXAMM");
+            input.Add("XXAMMXXAMA");
+            input.Add("SMSMSASXSS");
+            input.Add("SAXAMASAAA");
+            input.Add("MAMMMXMMMM");
+            input.Add("MXMXAXMASX");
+
+            Assert.Equal(9, input.XMasOccurences);
+        }
     }
 }
